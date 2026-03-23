@@ -1,0 +1,50 @@
+body {
+    font-family: "Inter", sans-serif !important;
+}
+
+* {
+    scroll-behavior: smooth;
+}
+
+.small {
+    line-height: 1.15rem;
+}
+
+.logo {
+    font-family: "DM Sans", sans-serif!important;
+    font-weight: 600!important;
+    letter-spacing: -0.08em; 
+    text-decoration: none !important;
+    color: #fff !important;
+}
+
+.width-1 {
+    width: 3rem;
+    height: 3rem;
+}
+
+.width-3 {
+    width: 7.5rem;
+}
+
+.img-bg {
+    background-size: cover;
+    height: 27.5rem;
+}
+
+.bg-fading {
+    background: linear-gradient(to top, #212529, transparent);
+}
+
+.bg-fading-2 {
+    background: linear-gradient(to bottom, #212529, transparent);
+}
+
+.bg-glass {
+    backdrop-filter: blur(1rem);
+}
+
+
+
+
+
