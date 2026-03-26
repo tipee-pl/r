@@ -20,7 +20,33 @@
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-  </head>
+     <style>
+       .slider {
+          display: flex;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          gap: 16px;
+          padding: 20px;
+        }
+        
+        .slider::-webkit-scrollbar {
+          display: none;
+        }
+        
+        .slide {
+          flex: 0 0 80%;
+          height: 200px;
+          background: #ddd;
+          border-radius: 16px;
+          scroll-snap-align: center;
+        
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 40px;
+        }
+     </style>
+   </head>
     <body class="bg-black text-white p-3">
       <nav class="navbar">
         <div class="container p-0">
@@ -39,8 +65,10 @@
         <a href="" class="btn btn-sm btn-outline-light fw-semibold lh-sm py-2 px-3 rounded-pill">Wypróbuj już teraz</a>
       </div>
       
-      <div class="d-none py-5" style="margin-left:-1rem!important;margin-right:-1rem!important">
-        <img src="https://image2url.com/r2/default/images/1774458664293-8b2c8aeb-1943-4338-b15c-7821b11d29a3.png" class="img-fluid object-fit-cover w-100"></img>
+      <div class="slider my-5" id="slider">
+        <div class="slide">1</div>
+        <div class="slide">2</div>
+        <div class="slide">3</div>
       </div>
       
       <div class="icon-link flex-column gap-4 py-5">
@@ -104,6 +132,38 @@
             });
           }
         };
+        
+        const slider = document.getElementById('slider');
+
+        // klonujemy slajdy
+        const slides = Array.from(slider.children);
+        
+        slides.forEach(slide => {
+          const clone = slide.cloneNode(true);
+          slider.appendChild(clone);
+        });
+        
+        slides.reverse().forEach(slide => {
+          const clone = slide.cloneNode(true);
+          slider.insertBefore(clone, slider.firstChild);
+        });
+        
+        // ustawiamy scroll na środek
+        slider.scrollLeft = slider.scrollWidth / 3;
+        
+        // nieskończony efekt
+        slider.addEventListener('scroll', () => {
+          const maxScroll = slider.scrollWidth;
+          const current = slider.scrollLeft;
+        
+          if (current <= 0) {
+            slider.scrollLeft = maxScroll / 3;
+          }
+        
+          if (current >= (maxScroll * 2) / 3) {
+            slider.scrollLeft = maxScroll / 3;
+          }
+        });
       </script>
     </body>
 </html>
