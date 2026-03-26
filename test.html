@@ -27,8 +27,8 @@
           scroll-snap-type: x mandatory;
           gap: 16px;
           padding: 20px;
-          margin-left:-1rem !important;
-          margin-right:-1rem !important:
+          margin-left:-.75rem !important;
+          margin-right:-.75rem !important:
         }
         
         .slider::-webkit-scrollbar {
@@ -38,14 +38,11 @@
         .slide {
           flex: 0 0 80%;
           height: 20rem;
-          background: #ddd;
-          border-radius: 16px;
           scroll-snap-align: center;
         
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 40px;
         }
      </style>
    </head>
@@ -68,9 +65,9 @@
       </div>
       
       <div class="slider my-4" id="slider">
-        <div class="slide">1</div>
-        <div class="slide">2</div>
-        <div class="slide">3</div>
+        <div class="slide border border-light border-opacity-25 rounded-3">1</div>
+        <div class="slide border border-light border-opacity-25 rounded-3">2</div>
+        <div class="slide border border-light border-opacity-25 rounded-3">3</div>
       </div>
       
       <div class="icon-link flex-column gap-4 py-5">
