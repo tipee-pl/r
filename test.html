@@ -25,6 +25,7 @@
           display: flex;
           overflow-x: auto;
           scroll-snap-type: x mandatory;
+          scroll-behavior: auto;
           gap: 16px;
           padding: 20px;
           margin-left:-.75rem !important;
@@ -139,10 +140,11 @@
         };
         
         const slider = document.getElementById('slider');
+const gap = 16;
 
-// duplikujemy startowo kilka razy żeby było "miękko"
 const originalSlides = Array.from(slider.children);
 
+// 🔁 tworzymy bufor z przodu i z tyłu
 function appendSlides() {
   originalSlides.forEach(slide => {
     slider.appendChild(slide.cloneNode(true));
@@ -155,30 +157,34 @@ function prependSlides() {
   });
 }
 
-// startowe buforowanie
-appendSlides();
+// 👉 NAJWAŻNIEJSZE: najpierw dodajemy slajdy Z PRZODU
 prependSlides();
 
-// ustaw start mniej więcej na środek
-slider.scrollLeft = slider.scrollWidth / 2;
+// 👉 ustawiamy scroll na "pierwszy prawdziwy" slajd (bez animacji)
+const slideWidth = slider.querySelector('.slide').offsetWidth + gap;
+slider.scrollLeft = slideWidth * originalSlides.length;
 
-// infinite bez przeskoku
+// 👉 teraz dopiero dokładamy z tyłu
+appendSlides();
+
+// 🚀 infinite scroll
 slider.addEventListener('scroll', () => {
   const scrollLeft = slider.scrollLeft;
   const scrollWidth = slider.scrollWidth;
   const clientWidth = slider.clientWidth;
 
-  // gdy blisko prawej krawędzi → dokładamy nowe
+  // prawa strona
   if (scrollLeft + clientWidth >= scrollWidth - 200) {
     appendSlides();
   }
 
-  // gdy blisko lewej → dokładamy z przodu i korygujemy scroll
+  // lewa strona
   if (scrollLeft <= 200) {
     const prevWidth = slider.scrollWidth;
     prependSlides();
     const newWidth = slider.scrollWidth;
 
+    // korekta żeby NIE było skoku
     slider.scrollLeft += (newWidth - prevWidth);
   }
 });
