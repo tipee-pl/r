@@ -45,6 +45,14 @@
           justify-content: center;
           font-size: 40px;
         }
+        
+        .slide {
+          transition: transform 0.3s;
+        }
+        
+        .slide.active {
+          transform: scale(1.05);
+        }
      </style>
    </head>
     <body class="bg-black text-white p-3">
@@ -135,35 +143,48 @@
         
         const slider = document.getElementById('slider');
 
-        // klonujemy slajdy
-        const slides = Array.from(slider.children);
-        
-        slides.forEach(slide => {
-          const clone = slide.cloneNode(true);
-          slider.appendChild(clone);
-        });
-        
-        slides.reverse().forEach(slide => {
-          const clone = slide.cloneNode(true);
-          slider.insertBefore(clone, slider.firstChild);
-        });
-        
-        // ustawiamy scroll na środek
-        slider.scrollLeft = slider.scrollWidth / 3;
-        
-        // nieskończony efekt
-        slider.addEventListener('scroll', () => {
-          const maxScroll = slider.scrollWidth;
-          const current = slider.scrollLeft;
-        
-          if (current <= 0) {
-            slider.scrollLeft = maxScroll / 3;
-          }
-        
-          if (current >= (maxScroll * 2) / 3) {
-            slider.scrollLeft = maxScroll / 3;
-          }
-        });
+// duplikujemy startowo kilka razy żeby było "miękko"
+const originalSlides = Array.from(slider.children);
+
+function appendSlides() {
+  originalSlides.forEach(slide => {
+    slider.appendChild(slide.cloneNode(true));
+  });
+}
+
+function prependSlides() {
+  originalSlides.slice().reverse().forEach(slide => {
+    slider.insertBefore(slide.cloneNode(true), slider.firstChild);
+  });
+}
+
+// startowe buforowanie
+appendSlides();
+prependSlides();
+
+// ustaw start mniej więcej na środek
+slider.scrollLeft = slider.scrollWidth / 2;
+
+// infinite bez przeskoku
+slider.addEventListener('scroll', () => {
+  const scrollLeft = slider.scrollLeft;
+  const scrollWidth = slider.scrollWidth;
+  const clientWidth = slider.clientWidth;
+
+  // gdy blisko prawej krawędzi → dokładamy nowe
+  if (scrollLeft + clientWidth >= scrollWidth - 200) {
+    appendSlides();
+  }
+
+  // gdy blisko lewej → dokładamy z przodu i korygujemy scroll
+  if (scrollLeft <= 200) {
+    const prevWidth = slider.scrollWidth;
+    prependSlides();
+    const newWidth = slider.scrollWidth;
+
+    slider.scrollLeft += (newWidth - prevWidth);
+  }
+});
       </script>
     </body>
 </html>
