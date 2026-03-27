@@ -136,55 +136,48 @@
       
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
       <script>
+        window.addEventListener('load', () => {
         const slider = document.getElementById('slider');
-const gap = 16;
-
-const originalSlides = Array.from(slider.children);
-
-// 🔁 tworzymy bufor z przodu i z tyłu
-function appendSlides() {
-  originalSlides.forEach(slide => {
-    slider.appendChild(slide.cloneNode(true));
-  });
-}
-
-function prependSlides() {
-  originalSlides.slice().reverse().forEach(slide => {
-    slider.insertBefore(slide.cloneNode(true), slider.firstChild);
-  });
-}
-
-// 👉 NAJWAŻNIEJSZE: najpierw dodajemy slajdy Z PRZODU
-prependSlides();
-
-// 👉 ustawiamy scroll na "pierwszy prawdziwy" slajd (bez animacji)
-const slideWidth = slider.querySelector('.slide').offsetWidth + gap;
-slider.scrollLeft = slideWidth * originalSlides.length;
-
-// 👉 teraz dopiero dokładamy z tyłu
-appendSlides();
-
-// 🚀 infinite scroll
-slider.addEventListener('scroll', () => {
-  const scrollLeft = slider.scrollLeft;
-  const scrollWidth = slider.scrollWidth;
-  const clientWidth = slider.clientWidth;
-
-  // prawa strona
-  if (scrollLeft + clientWidth >= scrollWidth - 200) {
-    appendSlides();
-  }
-
-  // lewa strona
-  if (scrollLeft <= 200) {
-    const prevWidth = slider.scrollWidth;
-    prependSlides();
-    const newWidth = slider.scrollWidth;
-
-    // korekta żeby NIE było skoku
-    slider.scrollLeft += (newWidth - prevWidth);
-  }
-});
+        const gap = 16;
+      
+        const originalSlides = Array.from(slider.children);
+      
+        function appendSlides() {
+          originalSlides.forEach(slide => {
+            slider.appendChild(slide.cloneNode(true));
+          });
+        }
+      
+        function prependSlides() {
+          originalSlides.slice().reverse().forEach(slide => {
+            slider.insertBefore(slide.cloneNode(true), slider.firstChild);
+          });
+        }
+      
+        prependSlides();
+      
+        const slideWidth = slider.querySelector('.slide').offsetWidth + gap;
+        slider.scrollLeft = slideWidth * originalSlides.length;
+      
+        appendSlides();
+      
+        slider.addEventListener('scroll', () => {
+          const scrollLeft = slider.scrollLeft;
+          const scrollWidth = slider.scrollWidth;
+          const clientWidth = slider.clientWidth;
+      
+          if (scrollLeft + clientWidth >= scrollWidth - 200) {
+            appendSlides();
+          }
+      
+          if (scrollLeft <= 200) {
+            const prevWidth = slider.scrollWidth;
+            prependSlides();
+            const newWidth = slider.scrollWidth;
+            slider.scrollLeft += (newWidth - prevWidth);
+          }
+        });
+      });
       </script>
     </body>
 </html>
