@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Tipee - Profesjonalna wizytówka Twojego biznesu</title>
+    <title>Tipee: Wizytówka Stworzona dla Twojego Biznesu</title>
 
     <script>
       if(window.innerWidth>768){window.stop();document.documentElement.innerHTML='<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"><body class="d-flex flex-column align-items-center justify-content-center vh-100 text-center px-3"><h1 class="display-4">Ooops... Error 404</h1><p class="fs-5 text-secondary">This site is only available on mobile devices.</p></body>';throw 0}
@@ -20,30 +20,72 @@
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-  </head>
-    <body class="bg-black text-white pt-3">
-      
-      <nav class="navbar border border-light border-opacity-25 rounded-3 ps-2 pe-3 mt-2 mx-3">
+     <style>
+       .slider {
+          display: flex;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          gap: 16px;
+          margin-left:-1rem !important;
+          margin-right:-1rem !important;
+          scroll-behavior: smooth;
+        }
+        
+        .slider::-webkit-scrollbar {
+          display: none;
+        }
+        
+        .slide {
+          flex: 0 0 75%;
+          scroll-snap-align: center;
+          display: flex;
+          align-items: end;
+          text-align: center;
+          
+          position:relative;
+          aspect-ratio: 5 / 6;
+          background-size: cover;
+          background-position: center;
+        }
+     </style>
+   </head>
+    <body class="bg-black text-white p-3">  
+      <nav class="navbar border border-light border-opacity-25 rounded-3 ps-2 pe-3 mt-2">
         <div class="container align-items-center py-1 px-0">
           <a href="" class="logo d-flex align-items-center fs-1 p-0">
             <img src="https://image2url.com/r2/default/images/1774293660081-4dbffd1e-19d7-457c-bc68-480c270a8f90.png" alt="logo" width="55" height="55" class="img-fluid pt-1">
             tipee
           </a>
-          <a href="#contact" class="btn btn-sm btn-outline-light fw-semibold rounded-3 py-2 px-3">
-            Stwórz szablon
+          <a href="https://tally.so/r/A78ook" class="btn btn-sm btn-outline-light fw-semibold rounded-3 py-2 px-3">
+            Stwórz wizytówkę
           </a>
         </div>
       </nav>
-      
-      <div class="d-flex flex-column mt-4 pb-0 p-3">
-        <p class="border border-light border-opacity-25 rounded-pill small py-2 px-3 me-auto">Zaktualizowano: <span class="fw-semibold">24/03/26</span></p>
-        <h1 class="display-1 fw-medium lh-1 py-1 mb-3">Wizytówka stworzona dla Twojego biznesu</h1>
-        <p>Prowadzisz restaurację? Skontaktuj się, <br>aby otrzymać nasz szablon całkowicie za darmo.</p>
+    
+      <div class="text-center py-5 px-3">
+        <h1 class="display-2 fw-medium lh-1 mb-3">Wizytówka stworzona dla Twojego biznesu</h1>
+        <p class="opacity-50 mb-4">Prowadzisz lokal gastronomiczny? Skontaktuj się, aby otrzymać nasze rozwiązania za darmo.</p>
+        <a href="https://tally.so/r/A78ook" class="btn btn-sm btn-outline-light fw-semibold lh-sm py-2 px-3 rounded-pill">Wypróbuj już teraz</a>
       </div>
-      <div class="d-flex flex-column gap-4 pt-4 px-3 pb-0">
-        <img src="https://image2url.com/r2/default/images/1773728416704-00f93c01-3864-42e1-afaf-a2fc712bf136.png" alt="" class="img-fluid object-fit-cover rounded-3 mb-4">
-        <h6 class="fs-1 fw-medium pb-1">Funkcje, które zostały stworzone dla Ciebie  </h6>
-        <div class="d-flex flex-column gap-3 pt-4 p-3 border border-light border-opacity-25 rounded-3 mt-2">
+      
+      <div class="slider mt-3 mb-4" id="slider">
+        <a href="kutcoffee" class="link-light text-decoration-none slide rounded-3" style="background-image: url('https://image2url.com/r2/default/images/1774535430072-114cf8bd-6927-4dab-abea-316ed3605377.jpeg');">
+          <div class="position-absolute start-50 top-50 translate-middle text-nowrap"><span class="display-3 fw-bold">KUT Coffee</span><br><span class="small fw-medium">Przytulna kawiarnia</span></div>
+          <div class="mb-3 py-2 fs-6 w-100"><b>tipee.pl</b>/kutcoffee <b>></b></div>
+        </a>
+        <a href="kawogrod" class="link-light text-decoration-none slide rounded-3" style="background-image: url('https://image2url.com/r2/default/images/1774535178044-b7813e2e-2f80-4e18-b1e8-79e19d745760.jpeg');">
+          <div class="position-absolute start-50 top-50 translate-middle text-nowrap"><span class="display-3 fw-bold">Kawogród</span><br><span class="small fw-medium">Kawiarnia speciality</span></div>
+          <div class="mb-3 py-2 fs-6 w-100"><b>tipee.pl</b>/kawogrod <b>></b></div>
+        </a>
+        <a href="kawogrod" class="link-light text-decoration-none slide rounded-3" style="background-image: url('https://image2url.com/r2/default/images/1774535178044-b7813e2e-2f80-4e18-b1e8-79e19d745760.jpeg');">
+          <div class="position-absolute start-50 top-50 translate-middle text-nowrap"><span class="display-3 fw-bold">Kawogród</span><br><span class="small fw-medium">Kawiarnia speciality</span></div>
+          <div class="mb-3 py-2 fs-6 w-100"><b>tipee.pl</b>/kawogrod <b>></b></div>
+        </a>
+      </div>
+      
+      <div class="icon-link flex-column gap-4 pt-3 my-4">
+        <h2 class="fs-1 fw-medium me-auto mb-1">Funkcje stworzone<br> dla gastronomii</h2>
+        <div class="d-flex flex-column gap-3 pt-4 p-3 border border-light border-opacity-25 rounded-3">
           <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#fff"><path d="M200-200v-560 560Zm0 80q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v100h-80v-100H200v560h560v-100h80v100q0 33-23.5 56.5T760-120H200Zm320-160q-33 0-56.5-23.5T440-360v-240q0-33 23.5-56.5T520-680h280q33 0 56.5 23.5T880-600v240q0 33-23.5 56.5T800-280H520Zm280-80v-240H520v240h280Zm-117.5-77.5Q700-455 700-480t-17.5-42.5Q665-540 640-540t-42.5 17.5Q580-505 580-480t17.5 42.5Q615-420 640-420t42.5-17.5Z"/></svg>
           <h5 class="fw-semibold">Napiwki Bezgotówkowe</h5>
           <p>Zwiększ przychody pracowników, nie ponosząc przy tym dodatkowych kosztów.</p>
@@ -51,58 +93,91 @@
         <div class="d-flex flex-column gap-3 pt-4 p-3 border border-light border-opacity-25 rounded-3 mt-2">
           <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#fff"><path d="M560-564v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-600q-38 0-73 9.5T560-564Zm0 220v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-380q-38 0-73 9t-67 27Zm0-110v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-490q-38 0-73 9.5T560-454ZM260-320q47 0 91.5 10.5T440-278v-394q-41-24-87-36t-93-12q-36 0-71.5 7T120-692v396q35-12 69.5-18t70.5-6Zm260 42q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q46-24 96-36t102-12q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 102 12t96 36q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59ZM280-494Z"/></svg>
           <h5 class="fw-semibold">Cyfrowe Menu</h5>
-          <p>Stwórz intuicyjne menu, dając klientom czas na dokonanie dobrego wyboru.</p>
+          <p>Udostępnij menu, które umożliwia klientom dokonanie najlepszego wyboru.</p>
         </div>
-        <div class="d-flex flex-column gap-3 pt-4 p-3 border border-light border-opacity-25 rounded-3 my-2">
+        <div class="d-flex flex-column gap-3 pt-4 p-3 border border-light border-opacity-25 rounded-3 mt-2">
           <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#fff"><path d="M320-160q-33 0-56.5-23.5T240-240v-120h120v-90q-35-2-66.5-15.5T236-506v-44h-46L60-680q36-46 89-65t107-19q27 0 52.5 4t51.5 15v-55h480v520q0 50-35 85t-85 35H320Zm120-200h240v80q0 17 11.5 28.5T720-240q17 0 28.5-11.5T760-280v-440H440v24l240 240v56h-56L510-514l-8 8q-14 14-29.5 25T440-464v104ZM224-630h92v86q12 8 25 11t27 3q23 0 41.5-7t36.5-25l8-8-56-56q-29-29-65-43.5T256-684q-20 0-38 3t-36 9l42 42Zm376 350H320v40h286q-3-9-4.5-19t-1.5-21Zm-280 40v-40 40Z"/></svg>
           <h5 class="fw-semibold">Opinie Jednym Kliknięciem</h5>
           <p>Dodaj linki, które przekierują odwiedzających na twoje social media.</p>
         </div>
-        <span class="small py-2 px-3 border border-light border-opacity-25 fw-medium rounded-pill me-auto mt-4" id="contact">Formularz kontaktowy</span>
-        <h6 class="display-4 fw-medium mb-0">Skontaktuj się, <br>a otrzymasz nasz szablon za darmo</h6>
-        <p class="opacity-50 mb-4">Stwórz profesjonalną wizytówkę swojego lokalu w zaledwie kilka minut.</p>
       </div>
-      <iframe class="px-2" data-tally-src="https://tally.so/embed/obBNQ5?alignLeft=1&hideTitle=1&dynamicHeight=1" loading="lazy" width="100%" height="200" frameborder="0" marginheight="0" marginwidth="0" title="Profesjonalna wizytówka Twojego Biznesu"></iframe>
-      <p class="mt-3 mb-5 me-5 ms-3">Przesyłając formularz oświadczasz, że zapoznałeś/aś się z naszymi <a class="link-light" href="terms">Zasadami użytkowania</a> oraz z naszą <a class="link-light" href="terms">Polityką prywatności</a>.</p>
-      <p class="mt-3 mb-5 me-5 ms-3">Jeśli chcesz uzyskać odpowiedzi na inne pytania, <a class="link-light" href="faq">przejdź tutaj.</a></p>
       
-      <footer class="d-flex flex-column bg-fading pb-5 px-3">
-        <hr class="hr mt-4"></hr>
-        <h4 class="display-4 logo my-3" style="letter-spacing:-.07em!important">tipee</h4>
-        <p class="fs-5 lh-sm opacity-50">Wizytówka stworzona <br> dla Twojego biznesu</p>
-        <p class="pt-1 mb-5">🇵🇱</p>
-        <h5 class="fw-bold">FAQ</h6>
-        <a href="faq" class="link-light text-decoration-none mt-2">
-          <span class="fs-5 opacity-50">
-            Jak działa Tipee? <br>
-             Co zawiera wizytówka? <br>
-            Czy Tipee jest bezpłatne? <br>
-              Jak działają napiwki online? <br>
-                Dla kogo jest Tipee?
-          </span><br>
-          <span class="fw-semibold lh-lg">Pokaż więcej</span>
-        </a>
-        <h5 class="fs-4 fw-bold pt-5">Pomoc</h6>
-        <div class="d-flex flex-column gap-1 fs-5 opacity-50 mt-2 mb-5">
-          <a href="mailto:tipee.service@gmail.com" class="link-light text-decoration-none">Kontakt</a>
-          <a href="terms#prywatnosc" class="link-light text-decoration-none">Prywatność</a>
-          <a href="terms" class="link-light text-decoration-none">Regulamin</a>
-        </div>
-        <p class="mb-0">Wszelkie prawa zastrzeżone <br>© 2026 Tipee</p>
+      <div class="text-center py-5 px-3">
+        <p class="mb-2">Wy dbacie o lokal, my o technologię. <span class="opacity-50">Ułatwiamy codzienną pracę. Pomagamy rozwijać biznesy w internecie.</span></p>
+      </div>
+      
+      <div class="small mt-4">
+        <h6>Czym jest Tipee?</h6>
+        <p class="opacity-50 mb-4">Tipee to bezpłatne narzędzie umożliwiające tworzenie cyfrowych wizytówek z napiwkami, przejrzystym menu oraz kluczowymi informacjami o lokalu.</p>
+        <hr class="hr mb-3"></hr>
+        <h6>Dlaczego warto?</h6>
+        <p class="opacity-50 mb-4">Zwiększasz przychody pracowników, upraszczasz dostęp do informacji o swoim lokalu oraz budujesz lepsze doświadczenie klientów za darmo.</p>
+        <hr class="hr mb-3"></hr>
+        <h6>Jak zacząć korzystać?</h6>
+        <p class="opacity-50 mb-4">Uzupełnij formularz, skonfiguruj wizytówkę, a następnie udostępnij ją swoim klientom za pomocą prostego linku.</p>
+        <hr class="hr mb-3"></hr>
+        <a href="faq" class="link-light">Wyświetl więcej...</a>
+      </div>
+      
+      <footer class="py-5">
+        <h4 class="display-2 fw-medium my-3">Zrób prosty<br> krok <br>do przodu.</h4>
+        <p class="opacity-50">Uzupełnij formularz, aby otrzymać nasze rozwiązania całkowicie za darmo.</p>
+        <a href="https://tally.so/r/A78ook" class="btn btn-sm btn-outline-light fw-semibold lh-sm py-2 px-3 rounded-pill my-2">Wypróbuj już teraz</a>
+        <p class="opacity-50 mt-3 mb-4">Lub skontaktuj się: <br><a href="mailto:tipee.service@gmail.com" class="link-light">tipee.service@gmail.com</a></p>
+        <p class="opacity-50 mb-4">Pomoc: <br><a href="mailto:tipee.service@gmail.com" class="link-light">tipee.service@gmail.com</a></p>
+        <a href="terms#prywatnosc" class="link-light opacity-50 text-decoration-none">Prywatność</a><br>
+        <a href="terms" class="link-light opacity-50 text-decoration-none">Regulamin</a>
+        <p class="opacity-50 mt-4">Wszelkie prawa zastrzeżone <br>© 2026 Tipee</p>
       </footer>
       
-      <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+      <a href="https://tally.so/r/A78ook" class="fixed-bottom icon-link justify-content-center link-light text-decoration-none fw-medium bg-black border-top border-light border-opacity-25 py-2 w-100">
+        Stwórz wizytówkę z <b class="fs-5 logo lh-sm">tipee</b>
+      </a>
+      
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
       <script>
-        document.getElementById("share").onclick = (e) => {
-          e.preventDefault();
-          if (navigator.share) {
-            navigator.share({
-              title: document.title,
-              url: window.location.href
-            });
+        window.addEventListener('load', () => {
+        const slider = document.getElementById('slider');
+        const gap = 16;
+      
+        const originalSlides = Array.from(slider.children);
+      
+        function appendSlides() {
+          originalSlides.forEach(slide => {
+            slider.appendChild(slide.cloneNode(true));
+          });
+        }
+      
+        function prependSlides() {
+          originalSlides.slice().reverse().forEach(slide => {
+            slider.insertBefore(slide.cloneNode(true), slider.firstChild);
+          });
+        }
+      
+        prependSlides();
+      
+        const slideWidth = slider.querySelector('.slide').offsetWidth + gap;
+        slider.scrollLeft = slideWidth * originalSlides.length;
+      
+        appendSlides();
+      
+        slider.addEventListener('scroll', () => {
+          const scrollLeft = slider.scrollLeft;
+          const scrollWidth = slider.scrollWidth;
+          const clientWidth = slider.clientWidth;
+      
+          if (scrollLeft + clientWidth >= scrollWidth - 200) {
+            appendSlides();
           }
-        };
+      
+          if (scrollLeft <= 200) {
+            const prevWidth = slider.scrollWidth;
+            prependSlides();
+            const newWidth = slider.scrollWidth;
+            slider.scrollLeft += (newWidth - prevWidth);
+          }
+        });
+      });
       </script>
     </body>
 </html>
