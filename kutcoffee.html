@@ -22,10 +22,11 @@
      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   </head>
     <body class="bg-black text-white">
-      <div class="border-bottom border-light border-opacity-25 icon-link gap-3 small p-3">
-        <button type="button" class="btn-close" aria-label="Close"></button>
+      
+      <div class="border-bottom border-light border-opacity-25 icon-link gap-3 small p-3" id="cookies">
+        <button type="button" class="btn-close" aria-label="Close" id="closecookies"></button>
         <p class="small opacity-75 mb-0"><span class="small">Strona korzysta z plików cookies. Kontynuując jej przeglądanie, wyrażasz zgodę na ich użycie.</span></p>
-        <button type="button" class="btn btn-sm bg-white text-black fw-semibold lh-1 py-2 px-3 rounded-pill ms-auto">Okey</button>
+        <button type="button" class="btn btn-sm bg-white text-black fw-semibold lh-1 py-2 px-3 rounded-pill ms-auto" id="acceptcookies">Okey</button>
       </div>
       
       <div class="pt-2 pb-5 px-3">
@@ -291,5 +292,25 @@
           }
         };
       </script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const banner = document.querySelector('#cookies');
+          const closeBtn = banner?.querySelector('#closecookies');
+          const okBtn = banner?.querySelector('#acceptcookies');
+        
+          if (localStorage.getItem("cookieBannerClosed") === "true") {
+            banner?.classList.add("d-none");
+            return;
+          }
+        
+          function hideBanner() {
+            banner?.classList.add("d-none");
+            localStorage.setItem("cookieBannerClosed", "true");
+          }
+        
+          closeBtn?.addEventListener("click", hideBanner);
+            okBtn?.addEventListener("click", hideBanner);
+          });
+    </script>
     </body>
 </html>
