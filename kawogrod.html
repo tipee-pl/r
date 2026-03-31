@@ -265,5 +265,25 @@
           }
         };
       </script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const banner = document.querySelector('#cookies');
+          const closeBtn = banner?.querySelector('#closecookies');
+          const okBtn = banner?.querySelector('#acceptcookies');
+        
+          if (localStorage.getItem("cookieBannerClosed") === "true") {
+            banner?.classList.add("d-none");
+            return;
+          }
+        
+          function hideBanner() {
+            banner?.classList.add("d-none");
+            localStorage.setItem("cookieBannerClosed", "true");
+          }
+        
+          closeBtn?.addEventListener("click", hideBanner);
+            okBtn?.addEventListener("click", hideBanner);
+          });
+      </script>
     </body>
 </html>
