@@ -19,10 +19,10 @@ body {
 }
 
 .width-1 {
-    width: 3rem;
-    height: 3rem;
-    min-width:3rem!important;
-    min-height:3rem!important;
+    width: 2rem;
+    height: 2rem;
+    min-width: 2rem!important;
+    min-height: 2rem!important;
 }
 
 .width-3 {
