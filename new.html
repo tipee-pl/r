@@ -36,6 +36,10 @@
    </head>
     <body class="bg-black text-white">  
       <nav class="navbar bg-fading-2 bg-glass border-bottom border-opacity-25 fixed-top px-3">
+        <div id="cookies" class="container border-bottom border-opacity-25 icon-link gap-3 small p-3">
+          <p class="small opacity-50 mb-0"><span class="small">Strona korzysta z plików cookies. Kontynuując jej przeglądanie, wyrażasz zgodę na ich użycie.</span></p>
+          <button type="button" class="btn btn-sm border border-light border-opacity-25 text-white fw-medium px-4 rounded-pill ms-auto" id="acceptcookies">Okey</button>
+        </div>
         <div class="container my-1 p-0">
           <div class="icon-link gap-1">
             <img src="https://i.postimg.cc/P594rX2k/IMG-0209.png" alt="logo" width="32" height="32" class="img-fluid">
@@ -108,5 +112,16 @@
       </div>
       
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+      <script>
+        document.getElementById("share").onclick = (e) => {
+          e.preventDefault();
+          if (navigator.share) {
+            navigator.share({
+              title: document.title,
+              url: window.location.href
+            });
+          }
+        };
+      </script>
     </body>
 </html>
