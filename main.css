@@ -35,11 +35,7 @@ body {
 }
 
 .bg-fading {
-    background: linear-gradient(
-        to top,
-        #000 0%,
-        transparent 100%
-    );
+    background: linear-gradient(to top, #000, transparent);
 }
 
 .bg-fading-2 {
