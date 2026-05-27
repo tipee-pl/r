@@ -63,14 +63,14 @@
           <span class="display-2 logo ms-auto" id="progress-percent"></span>
         </div>
       </div>
-      <div class="d-flex flex-column p-3 border border-secondary rounded-4 mb-5 mx-3">
+      <div class="d-flex flex-column p-3 border border-secondary rounded-4 mt-0 m-3">
         <p class="mb-0">Do zbudowania portfela o wartości <span class="border-bottom border-2 border-success text-nowrap">250 000,00 zł</span> do 26. roku życia należy systematycznie odkładać: </p>
         <hr class="hr"></hr>
         <div class="display-4 logo"><span id="calc-monthly-val">0.00</span> <span class="fs-4 text-success">zł / msc</span></div>
       </div>
       
-      <div class="sticky-bottom bg-fading pb-3">
-        <button class="btn btn-light fw-semibold py-2 rounded-pill w-100" id="exportBtn">Zapisz</button>
+      <div class="sticky-bottom bg-fading p-3" data-bs-toggle="modal" data-bs-target="#addAssetModal">
+        <button class="btn btn-light fw-semibold py-2 rounded-pill w-100" id="exportBtn">Dodaj transakcję</button>
       </div>
       
       <div class="modal fade" id="addAssetModal" tabindex="-1" aria-labelledby="addAssetModalLabel" aria-hidden="true">
