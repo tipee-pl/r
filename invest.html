@@ -25,44 +25,177 @@
       <div class="icon-link gap-2 w-100 pb-2 p-3">    
         <img class="img-fluid object-fit-cover rounded-circle width-1 p-1 bg-white" src="https://plain-weur-prod-public.komododecks.com/202605/25/jAsrISNJ3wOWP5EcWXG5/image.png"></img>
         <span class="fs-5 lh-1 logo">Wieczorek<br>Investments</span>
-        <svg class="ms-auto" xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#fff"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
+        <svg class="ms-auto" role="button" data-bs-toggle="modal" data-bs-target="#addAssetModal" xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#fff"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
       </div>
       
       <p class="fw-medium text-muted text-center w-100 pt-1 mt-4 mb-1">Portfel Główny</p>
-      <div class="display-1 fw-bold text-center w-100 mb-2">50 000.00 <span class="fs-2">zł</span></div>
+      <div class="display-1 fw-bold text-center w-100 mb-2"><span id="total-amount-val">50 000.00</span> <span class="fs-2">zł</span></div>
       <div class="small text-center w-100 mb-4"><span class="fw-medium text-success">▲ 4,800 zł</span> <span class="text-muted">/ w tym miesiącu</span></div>
+      
       <h2 class="fs-6 fw-semibold text-center pt-3 pb-1 mb-3 w-100">Twoje inwestycje</h2>
       <div class="d-flex flex-column p-3 border border-secondary rounded-4 mx-3 mb-4">
-        <div class="icon-link">Obligacje <span class="ms-auto">50,000.00 zł</span></div>
+        <div class="icon-link">Obligacje <span class="ms-auto" id="val-obligacje">50 000.00 zł</span></div>
         <hr class="hr"></hr>
-        <div class="icon-link">Akcje <span class="ms-auto">00.00 zł</span></div>
+        <div class="icon-link">Akcje <span class="ms-auto" id="val-akcje">0.00 zł</span></div>
         <hr class="hr"></hr>
-        <div class="icon-link">Kryptowaluty <span class="ms-auto">00.00 zł</span></div>
+        <div class="icon-link">Kryptowaluty <span class="ms-auto" id="val-kryptowaluty">0.00 zł</span></div>
         <hr class="hr"></hr>
-        <div class="icon-link">Inne aktywa<span class="ms-auto">10,000.00 zł</span></div>
+        <div class="icon-link">Inne aktywa<span class="ms-auto" id="val-inne">10 000.00 zł</span></div>
       </div>
+
       <h2 class="fs-6 fw-semibold text-center pt-3 pb-1 mb-3 w-100">Cele do zrealizowania</h2>
       <div class="d-flex flex-column p-3 border border-secondary rounded-4 mx-3 mb-4">
         <span class="fw-medium">Kupić mieszkanie</span>
-        <div class="progress my-3" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: .25rem">
-          <div class="progress-bar bg-success" style="width: 25%"></div>
+        <div class="progress my-3" role="progressbar" style="height: .25rem">
+          <div class="progress-bar bg-success" id="progress-bar" style="width: 25%"></div>
         </div>
         <div class="icon-link">
           <div>
-            <span class="fw-medium small text-muted">Zebrano: 50,000 zł</span><br>
-            <span class="fw-medium small text-muted">Docelowo: 250,000 zł</span>
+            <span class="fw-medium small text-muted" id="progress-collected">Zebrano: 50 000.00 zł</span><br>
+            <span class="fw-medium small text-muted">Docelowo: 250 000.00 zł</span>
           </div>
-          <span class="display-2 logo ms-auto">25%</span>
+          <span class="display-2 logo ms-auto" id="progress-percent">25%</span>
         </div>
       </div>
+
       <h2 class="fs-6 fw-semibold text-center pt-3 pb-1 mb-3 w-100">Kalkulator oszczędności</h2>
-      <div class="d-flex flex-column p-3 border border-secondary rounded-4 mb-5 mx-3">
-        <p class="mb-0">Do zbudowania portfela o wartości <span class="fw-semibold text-muted">250,000.00 zł</span> do 26. roku życia należy systematycznie odkładać: </p>
+      <div class="d-flex flex-column p-3 border border-secondary rounded-4 mb-4 mx-3">
+        <p class="mb-0">Do zbudowania portfela o wartości <span class="fw-semibold text-muted">250 000.00 zł</span> do 26. roku życia należy systematycznie odkładać: </p>
         <hr class="hr"></hr>
-        <div class="display-4 logo">4,060.00 <span class="fs-4 fw-normal text-muted">zł / msc</span></div>
+        <div class="display-4 logo">4 060.00 <span class="fs-4 fw-normal text-muted">zł / msc</span></div>
       </div>
+
+      <div class="d-flex justify-content-center gap-2 mb-4 mx-3">
+        <button class="btn btn-outline-light w-50" id="exportBtn">Zapisz kopię</button>
+        <label class="btn btn-outline-secondary w-50 mb-0">
+          Wczytaj kopię
+          <input type="file" id="importFile" class="d-none" accept=".json">
+        </label>
+      </div>
+
       <p class="text-center text-muted mb-0 w-100">Wieczorek Investments PL<br>Copyright &copy; 2026<br>Wszelkie prawa zastrzeżone.</p>
-        
+      
+      <div class="modal fade" id="addAssetModal" tabindex="-1" aria-labelledby="addAssetModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content bg-dark text-white border-secondary">
+            <div class="modal-header border-secondary">
+              <h5 class="modal-title" id="addAssetModalLabel">Dodaj środki</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Zamknij"></button>
+            </div>
+            <div class="modal-body">
+              
+              <div class="mb-3">
+                <label for="assetCategory" class="form-label">Wybierz aktywo</label>
+                <select class="form-select bg-dark text-white border-secondary" id="assetCategory">
+                  <option value="obligacje">Obligacje</option>
+                  <option value="akcje">Akcje</option>
+                  <option value="kryptowaluty">Kryptowaluty</option>
+                  <option value="inne">Inne aktywa</option>
+                </select>
+              </div>
+              
+              <div class="mb-3">
+                <label for="assetAmount" class="form-label">Kwota (zł)</label>
+                <input type="number" class="form-control bg-dark text-white border-secondary" id="assetAmount" placeholder="np. 4000">
+              </div>
+      
+            </div>
+            <div class="modal-footer border-secondary">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Anuluj</button>
+              <button type="button" class="btn btn-light" id="saveAssetBtn">Zapisz</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const defaultPortfolio = {
+                obligacje: 0,
+                akcje: 0,
+                kryptowaluty: 0,
+                inne: 0
+            };
+
+            let portfolioData = JSON.parse(localStorage.getItem('myPortfolio')) || defaultPortfolio;
+
+            function updateUI() {
+                const total = portfolioData.obligacje + portfolioData.akcje + portfolioData.kryptowaluty + portfolioData.inne;
+                const formatMoney = (amount) => amount.toLocaleString('pl-PL', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+                // Aktualizacja głównego balansu
+                document.getElementById('total-amount-val').innerText = formatMoney(total);
+
+                // Aktualizacja kategorii
+                const categories = ['obligacje', 'akcje', 'kryptowaluty', 'inne'];
+                categories.forEach(cat => {
+                    const el = document.getElementById(`val-${cat}`);
+                    if (el) el.innerText = formatMoney(portfolioData[cat]) + ' zł';
+                });
+
+                // Aktualizacja celu mieszkaniowego
+                const targetAmount = 250000;
+                const progressPercent = Math.min((total / targetAmount) * 100, 100).toFixed(0);
+                
+                document.getElementById('progress-bar').style.width = progressPercent + '%';
+                document.getElementById('progress-percent').innerText = progressPercent + '%';
+                document.getElementById('progress-collected').innerText = 'Zebrano: ' + formatMoney(total) + ' zł';
+            }
+
+            updateUI();
+
+            document.getElementById('saveAssetBtn').addEventListener('click', () => {
+                const category = document.getElementById('assetCategory').value;
+                const amountInput = document.getElementById('assetAmount').value;
+                const amount = parseFloat(amountInput);
+
+                if (!isNaN(amount) && amount > 0) {
+                    portfolioData[category] += amount;
+                    localStorage.setItem('myPortfolio', JSON.stringify(portfolioData));
+                    
+                    updateUI();
+                    document.getElementById('assetAmount').value = '';
+                    
+                    const modalEl = document.getElementById('addAssetModal');
+                    const modalInstance = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+                    modalInstance.hide();
+                } else {
+                    alert('Wpisz poprawną kwotę większą od zera.');
+                }
+            });
+
+            document.getElementById('exportBtn').addEventListener('click', () => {
+                const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(portfolioData));
+                const downloadAnchorNode = document.createElement('a');
+                
+                downloadAnchorNode.setAttribute("href", dataStr);
+                downloadAnchorNode.setAttribute("download", "wieczorek_investments.json");
+                
+                document.body.appendChild(downloadAnchorNode);
+                downloadAnchorNode.click();
+                downloadAnchorNode.remove();
+            });
+
+            document.getElementById('importFile').addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                const fileReader = new FileReader();
+                fileReader.onload = (e) => {
+                    try {
+                        portfolioData = JSON.parse(e.target.result);
+                        localStorage.setItem('myPortfolio', JSON.stringify(portfolioData));
+                        updateUI();
+                    } catch (error) {
+                        alert("Błąd! Niepoprawny plik.");
+                    }
+                };
+                fileReader.readAsText(file);
+                event.target.value = '';
+            });
+        });
+      </script>
     </body>
 </html>
