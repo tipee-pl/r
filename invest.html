@@ -100,13 +100,12 @@
         </div>
       </div>
 
-      <div class="offcanvas offcanvas-bottom h-50" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel" data-bs-backdrop="static" data-bs-keyboard="false">
-        <div class="offcanvas-header justify-content-center">
-          <h5 class="offcanvas-title fw-bold" id="offcanvasBottomLabel">Wymagana autoryzacja danych</h5>
-        </div>
-        <div class="offcanvas-body small d-flex flex-column align-items-center justify-content-center text-center px-4">
-          <p class="fs-6 text-secondary mb-4">Aby uzyskać dostęp do panelu inwestycyjnego, prześlij swój aktualny plik autoryzacyjny JSON.</p>
-          <label class="btn btn-light fw-semibold px-4 py-2 rounded-pill">
+      <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="offcanvas-body small d-flex flex-column align-items-center justify-content-center text-center p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" height="60px" viewBox="0 -960 960 960" width="60px" fill="#fff"><path d="M480-80q-139-35-229.5-159.5T160-516v-244l320-120 320 120v244q0 152-90.5 276.5T480-80Zm0-84q104-33 172-132t68-220v-189l-240-90-240 90v189q0 121 68 220t172 132Zm0-316Zm-80 160h160q17 0 28.5-11.5T600-360v-120q0-17-11.5-28.5T560-520v-40q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560v40q-17 0-28.5 11.5T360-480v120q0 17 11.5 28.5T400-320Zm40-200v-40q0-17 11.5-28.5T480-600q17 0 28.5 11.5T520-560v40h-80Z"/></svg>
+          <h5 class="offcanvas-title fw-bold" id="offcanvasBottomLabel">Wymagana autoryzacja</h5>
+          <p class="fs-6 text-secondary mb-4">Aby uzyskać dostęp do panelu inwestycyjnego, prześlij plik autoryzacyjny JSON.</p>
+          <label class="btn btn-light fw-semibold px-4 py-2 rounded-pill w-100">
             Wgraj plik JSON
             <input type="file" id="offcanvasImportFile" class="d-none" accept=".json">
           </label>
