@@ -32,32 +32,32 @@
       </div>
       
       <p class="fw-medium text-muted text-center w-100 pt-1 mt-4 mb-1">Portfel Główny</p>
-      <div class="display-1 fw-bold text-center w-100 mb-2"><span id="total-amount-val">50 000.00</span> <span class="fs-2">zł</span></div>
-      <div class="small text-center w-100 mb-4"><span class="fw-medium text-success">▲ 4 800 zł</span> <span class="text-muted">/ w tym miesiącu</span></div>
+      <div class="display-1 fw-bold text-center w-100 mb-2"><span id="total-amount-val"></span> <span class="fs-2">zł</span></div>
+      <div class="small text-center w-100 mb-4"><span class="fw-medium text-success">▲ 0,00 zł</span> <span class="text-muted">/ w tym miesiącu</span></div>
       
       <h2 class="fs-6 fw-semibold text-center pt-3 pb-1 mb-3 w-100">Twoje inwestycje</h2>
       <div class="d-flex flex-column p-3 border border-secondary rounded-4 mx-3 mb-4">
-        <div class="icon-link">Obligacje <span class="ms-auto" id="val-obligacje">50 000.00 zł</span></div>
+        <div class="icon-link">Obligacje <span class="ms-auto" id="val-obligacje"></span></div>
         <hr class="hr"></hr>
-        <div class="icon-link">Akcje <span class="ms-auto" id="val-akcje">0.00 zł</span></div>
+        <div class="icon-link">Akcje <span class="ms-auto" id="val-akcje"></span></div>
         <hr class="hr"></hr>
-        <div class="icon-link">Kryptowaluty <span class="ms-auto" id="val-kryptowaluty">0.00 zł</span></div>
+        <div class="icon-link">Kryptowaluty <span class="ms-auto" id="val-kryptowaluty"></span></div>
         <hr class="hr"></hr>
-        <div class="icon-link">Inne aktywa<span class="ms-auto" id="val-inne">10 000.00 zł</span></div>
+        <div class="icon-link">Inne aktywa<span class="ms-auto" id="val-inne"></span></div>
       </div>
 
       <h2 class="fs-6 fw-semibold text-center pt-3 pb-1 mb-3 w-100">Cele do zrealizowania</h2>
       <div class="d-flex flex-column p-3 border border-secondary rounded-4 mx-3 mb-4">
         <span class="fw-medium">Kupić mieszkanie</span>
         <div class="progress my-3" role="progressbar" style="height: .25rem">
-          <div class="progress-bar bg-success" id="progress-bar" style="width: 25%"></div>
+          <div class="progress-bar bg-success" id="progress-bar"></div>
         </div>
         <div class="icon-link">
           <div>
-            <span class="fw-medium small text-muted" id="progress-collected">Zebrano: 50 000.00 zł</span><br>
+            <span class="fw-medium small text-muted" id="progress-collected">Zebrano: </span><br>
             <span class="fw-medium small text-muted">Docelowo: 250 000,00 zł</span>
           </div>
-          <span class="display-2 logo ms-auto" id="progress-percent">25%</span>
+          <span class="display-2 logo ms-auto" id="progress-percent"></span>
         </div>
       </div>
 
@@ -72,7 +72,7 @@
       
       <div class="modal fade" id="addAssetModal" tabindex="-1" aria-labelledby="addAssetModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content bg-black text-white border-secondary">
+          <div class="modal-content bg-black text-white border-secondary rounded-4">
             <div class="modal-header border-secondary">
               <h5 class="modal-title" id="addAssetModalLabel">Dodaj nowe środki</h5>
               <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Zamknij"></button>
@@ -96,7 +96,7 @@
       
             </div>
             <div class="modal-footer border-top-0">
-              <button type="button" class="btn btn-sm btn-light fw-semibold px-3 mx-auto" id="saveAssetBtn">Zapisz</button>
+              <button type="button" class="btn btn-light fw-semibold lh-sm p-3 rounded-pill w-100" id="saveAssetBtn">Zapisz</button>
             </div>
           </div>
         </div>
