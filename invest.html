@@ -99,6 +99,19 @@
           </div>
         </div>
       </div>
+
+      <div class="offcanvas offcanvas-bottom h-50" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="offcanvas-header justify-content-center">
+          <h5 class="offcanvas-title fw-bold" id="offcanvasBottomLabel">Wymagana autoryzacja danych</h5>
+        </div>
+        <div class="offcanvas-body small d-flex flex-column align-items-center justify-content-center text-center px-4">
+          <p class="fs-6 text-secondary mb-4">Aby uzyskać dostęp do panelu inwestycyjnego, prześlij swój aktualny plik autoryzacyjny JSON.</p>
+          <label class="btn btn-light fw-semibold px-4 py-2 rounded-pill">
+            Wgraj plik JSON
+            <input type="file" id="offcanvasImportFile" class="d-none" accept=".json">
+          </label>
+        </div>
+      </div>
       
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
       
@@ -112,6 +125,10 @@
             };
 
             let portfolioData = JSON.parse(localStorage.getItem('myPortfolio')) || defaultPortfolio;
+
+            const offcanvasEl = document.getElementById('offcanvasBottom');
+            const lockPanel = new bootstrap.Offcanvas(offcanvasEl);
+            lockPanel.show();
 
             function updateUI() {
                 const total = portfolioData.obligacje + portfolioData.akcje + portfolioData.kryptowaluty + portfolioData.inne;
@@ -129,8 +146,8 @@
                 document.getElementById('progress-percent').innerText = progressPercent + '%';
                 document.getElementById('progress-collected').innerText = 'Zebrano: ' + formatMoney(total) + ' zł';
 
-                const birthDate = new Date(2004, 6, 28); // 6 = lipiec w JS
-                const deadlineDate = new Date(birthDate.getFullYear() + 26, birthDate.getMonth(), birthDate.getDate()); // 28.07.2030
+                const birthDate = new Date(2004, 6, 28);
+                const deadlineDate = new Date(birthDate.getFullYear() + 26, birthDate.getMonth(), birthDate.getDate());
                 const currentDate = new Date();
 
                 let monthsLeft = (deadlineDate.getFullYear() - currentDate.getFullYear()) * 12 + (deadlineDate.getMonth() - currentDate.getMonth());
@@ -171,7 +188,6 @@
                 }
             });
 
-            // Usunięto stare listenery importu/eksportu – zostały tylko wersje z weryfikacją
             document.getElementById('exportBtn').addEventListener('click', () => {
                 const dataToExport = { ...portfolioData, password: "password" };
                 const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(dataToExport));
@@ -184,8 +200,8 @@
                 downloadAnchorNode.click();
                 downloadAnchorNode.remove();
             });
-              
-            document.getElementById('importFile').addEventListener('change', (event) => {
+
+            function handleFileImport(event) {
                 const file = event.target.files[0];
                 if (!file) return;
               
@@ -199,6 +215,8 @@
                             portfolioData = importedData;
                             localStorage.setItem('myPortfolio', JSON.stringify(portfolioData));
                             updateUI();
+                            
+                            lockPanel.hide();
                         } else {
                             window.stop(); 
                             document.documentElement.innerHTML = `
@@ -216,7 +234,10 @@
                 };
                 fileReader.readAsText(file);
                 event.target.value = '';
-            });
+            }
+
+            document.getElementById('importFile').addEventListener('change', handleFileImport);
+            document.getElementById('offcanvasImportFile').addEventListener('change', handleFileImport);
         });
       </script>
     </body>
