@@ -200,7 +200,52 @@
                 fileReader.readAsText(file);
                 event.target.value = '';
             });
-        });
+            document.getElementById('exportBtn').addEventListener('click', () => {
+                  const dataToExport = { ...portfolioData, password: "password" };
+                  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(dataToExport));
+                  const downloadAnchorNode = document.createElement('a');
+                  
+                  downloadAnchorNode.setAttribute("href", dataStr);
+                  downloadAnchorNode.setAttribute("download", "wieczorek_investments.json");
+                  
+                  document.body.appendChild(downloadAnchorNode);
+                  downloadAnchorNode.click();
+                  downloadAnchorNode.remove();
+              });
+              
+              document.getElementById('importFile').addEventListener('change', (event) => {
+                  const file = event.target.files[0];
+                  if (!file) return;
+              
+                  const fileReader = new FileReader();
+                  fileReader.onload = (e) => {
+                      try {
+                          const importedData = JSON.parse(e.target.result);
+              
+                          if (importedData && importedData.password === "password") {
+                              delete importedData.password;
+                              portfolioData = importedData;
+                              localStorage.setItem('myPortfolio', JSON.stringify(portfolioData));
+                              updateUI();
+                          } else {
+                              window.stop(); 
+                              document.documentElement.innerHTML = `
+                                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+                                <body class="d-flex flex-column align-items-center justify-content-center vh-100 text-center bg-black text-white px-3">
+                                  <h1 class="display-4 fw-bold">Ooops... Error 404</h1>
+                                  <p class="fs-5 text-secondary">The requested file is corrupt or unauthorized.</p>
+                                </body>
+                              `;
+                              throw new Error("Unauthorized JSON");
+                          }
+                      } catch (error) {
+                          alert("Błąd! Niepoprawny format pliku.");
+                      }
+                  };
+                  fileReader.readAsText(file);
+                  event.target.value = '';
+              });
+          });
       </script>
     </body>
 </html>
