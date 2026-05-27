@@ -71,16 +71,15 @@
       <p class="text-center text-muted mb-0 w-100">Wieczorek Investments PL<br>Copyright &copy; 2026<br>Wszelkie prawa zastrzeżone.</p>
       
       <div class="modal fade" id="addAssetModal" tabindex="-1" aria-labelledby="addAssetModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content bg-body-tertiary text-white rounded-4">
+        <div class="modal-dialog modal-dialog-centered p-3">
+          <div class="modal-content bg-dark-subtle text-white p-3 rounded-5">
             <div class="modal-header border-bottom-0">
-              <h5 class="modal-title" id="addAssetModalLabel">Dodaj nowe środki</h5>
-              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Zamknij"></button>
+              <h5 class="modal-title fs-6" id="addAssetModalLabel">Dodaj nowe środki</h5>
             </div>
-            <div class="modal-body">
+            <div class="modal-body py-0">
               
-              <div class="mb-3">
-                <select class="form-select bg-dark-subtle text-white" id="assetCategory">
+              <div class="mb-2">
+                <select class="form-select bg-body-tertiary text-white py-2 px-3 rounded-pill" id="assetCategory">
                   <option value="obligacje">Obligacje</option>
                   <option value="akcje">Akcje</option>
                   <option value="kryptowaluty">Kryptowaluty</option>
@@ -89,13 +88,13 @@
               </div>
               
               <div class="mb-0">
-                <input type="number" class="form-control bg-dark-subtle text-white" id="assetAmount" placeholder="4000 zł">
+                <input type="number" class="form-control bg-body-tertiary text-white py-2 px-3 rounded-pill" id="assetAmount" placeholder="4000 zł">
               </div>
       
             </div>
             <div class="modal-footer icon-link flex-row flex-nowrap border-top-0">
-              <button type="button" class="btn bg-dark-subtle text-white fw-semibold lh-1 p-3 rounded-pill w-100" data-bs-dismiss="modal">Zamknij</button>
-              <button type="button" class="btn bg-dark-subtle text-white fw-semibold lh-1 p-3 rounded-pill w-100" id="saveAssetBtn">Zapisz</button>
+              <button type="button" class="btn bg-body-tertiary text-white fw-semibold lh-1 p-3 rounded-pill w-100" data-bs-dismiss="modal">Zamknij</button>
+              <button type="button" class="btn bg-body-tertiary text-white fw-semibold lh-1 p-3 rounded-pill w-100" id="saveAssetBtn">Zapisz</button>
             </div>
           </div>
         </div>
