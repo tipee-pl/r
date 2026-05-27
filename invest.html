@@ -72,7 +72,7 @@
       
       <div class="modal fade" id="addAssetModal" tabindex="-1" aria-labelledby="addAssetModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content bg-body-tertiary text-white border-secondary rounded-4">
+          <div class="modal-content bg-dark text-white border-secondary rounded-4">
             <div class="modal-header border-secondary">
               <h5 class="modal-title" id="addAssetModalLabel">Dodaj nowe środki</h5>
               <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Zamknij"></button>
@@ -80,8 +80,7 @@
             <div class="modal-body">
               
               <div class="mb-3">
-                <label for="assetCategory" class="form-label">Wybierz aktywo</label>
-                <select class="form-select bg-black text-white border-secondary" id="assetCategory">
+                <select class="form-select bg-dark-subtle text-white border-secondary" id="assetCategory">
                   <option value="obligacje">Obligacje</option>
                   <option value="akcje">Akcje</option>
                   <option value="kryptowaluty">Kryptowaluty</option>
@@ -90,14 +89,13 @@
               </div>
               
               <div class="mb-0">
-                <label for="assetAmount" class="form-label">Kwota (zł)</label>
-                <input type="number" class="form-control bg-black text-white border-secondary" id="assetAmount" placeholder="np. 4000">
+                <input type="number" class="form-control bg-black text-white border-secondary" id="assetAmount" placeholder="4000 zł">
               </div>
       
             </div>
-            <div class="modal-footer icon-link gap-3 border-top-0">
-              <button type="button" class="btn btn-dark fw-semibold lh-1 p-3 rounded-pill w-100" data-bs-dismiss="modal">Zamknij</button>
-              <button type="button" class="btn btn-dark fw-semibold lh-1 p-3 rounded-pill w-100" id="saveAssetBtn">Zapisz</button>
+            <div class="modal-footer icon-link flex-row flex-nowrap gap-3 border-top-0 pb-2">
+              <button type="button" class="btn bg-dark-subtle text-white fw-semibold lh-1 p-3 rounded-pill w-100" data-bs-dismiss="modal">Zamknij</button>
+              <button type="button" class="btn bg-dark-subtle text-white fw-semibold lh-1 p-3 rounded-pill w-100" id="saveAssetBtn">Zapisz</button>
             </div>
           </div>
         </div>
