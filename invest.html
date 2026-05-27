@@ -65,7 +65,7 @@
       <div class="d-flex flex-column p-3 border border-secondary rounded-4 mb-4 mx-3">
         <p class="mb-0">Do zbudowania portfela o wartości <span class="border-bottom border-2 border-success text-nowrap">250 000,00 zł</span> do 26. roku życia należy systematycznie odkładać: </p>
         <hr class="hr"></hr>
-        <div class="display-4 logo">4 060.00 <span class="fs-4 text-success">zł / msc</span></div>
+        <div class="display-4 logo"><span id="calc-monthly-val">0.00</span> <span class="fs-4 text-success">zł / msc</span></div>
       </div>
 
       <p class="text-muted small mb-4 mx-3 px-3"><span class="small">Copyright &copy; 2026 Wieczorek Investments<br>Wszelkie prawa zastrzeżone.</span></p>
@@ -116,24 +116,37 @@
             function updateUI() {
                 const total = portfolioData.obligacje + portfolioData.akcje + portfolioData.kryptowaluty + portfolioData.inne;
                 const formatMoney = (amount) => amount.toLocaleString('pl-PL', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-
-                // Aktualizacja głównego balansu
                 document.getElementById('total-amount-val').innerText = formatMoney(total);
-
-                // Aktualizacja kategorii
                 const categories = ['obligacje', 'akcje', 'kryptowaluty', 'inne'];
                 categories.forEach(cat => {
                     const el = document.getElementById(`val-${cat}`);
                     if (el) el.innerText = formatMoney(portfolioData[cat]) + ' zł';
                 });
-
-                // Aktualizacja celu mieszkaniowego
                 const targetAmount = 250000;
                 const progressPercent = Math.min((total / targetAmount) * 100, 100).toFixed(0);
                 
                 document.getElementById('progress-bar').style.width = progressPercent + '%';
                 document.getElementById('progress-percent').innerText = progressPercent + '%';
                 document.getElementById('progress-collected').innerText = 'Zebrano: ' + formatMoney(total) + ' zł';
+
+                const birthDate = new Date(2004, 6, 28); // 6 = lipiec w JS
+                const deadlineDate = new Date(birthDate.getFullYear() + 26, birthDate.getMonth(), birthDate.getDate()); // 28.07.2030
+                const currentDate = new Date();
+
+                let monthsLeft = (deadlineDate.getFullYear() - currentDate.getFullYear()) * 12 + (deadlineDate.getMonth() - currentDate.getMonth());
+                
+                if (currentDate.getDate() > deadlineDate.getDate()) {
+                    monthsLeft--;
+                }
+
+                const remainingAmount = targetAmount - total;
+                let monthlyRequired = 0;
+
+                if (remainingAmount > 0 && monthsLeft > 0) {
+                    monthlyRequired = remainingAmount / monthsLeft;
+                }
+
+                document.getElementById('calc-monthly-val').innerText = formatMoney(monthlyRequired);
             }
 
             updateUI();
